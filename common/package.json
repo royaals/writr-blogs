@@ -1,0 +1,15 @@
+{
+  "name": "writr-common",
+  "version": "1.0.2",
+  "description": "Writer-Blogging application",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.4.5",
+    "zod": "^3.22.5"
+  }
+}
