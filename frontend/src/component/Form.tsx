@@ -15,16 +15,17 @@ const Form = ({type}: {type: "signup" | "signin"}) => {
     async function sendRequest() {
       try {
           const response = await axios.post(`${BACKEND_URL}/api/v1/user/${type === "signup" ? "signup" : "signin"}`, postInputs);
-          const jwt=response.data;
-          localStorage.setItem("token",jwt);
-          navigate("/blog/1")
-         
+        
+          const jwt = response.data.jwt;  
+          
+          localStorage.setItem("token", jwt);
+          navigate("/blogs");
       } catch(e) {
+          console.error('Error:', e);  
           alert("Error while signing up")
-         
       }
   }
-      
+    
   return (
     <div className=" bg-card text-card-foreground shadow-sm" data-v0-t="card">
     <div className="flex flex-col p-6 space-y-2">
