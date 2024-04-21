@@ -3,6 +3,8 @@ import { BlogCard } from "../component/BlogCard";
 import { BlogSkeleton } from "../component/BlogSkeleton";
 import { useBlogs } from "../hooks";
 
+import RightCategoryCard from "../component/RightCategoryCard";
+import RightNewsLetter from "@/component/RightNewsLetter";
 export const Blogs = () => {
     const { loading, blogs } = useBlogs();
 
@@ -23,8 +25,8 @@ export const Blogs = () => {
 
     return <div>
         <Appbar />
-        <div  className="flex justify-center">
-            <div>
+        <div  className="flex justify-center grid grid-cols-12">
+            <div className="col-span-9 ml-auto">
                 {blogs.map(blog => <BlogCard
                     id={blog.id}
                     authorName={blog.author.name || "Anonymous"}
@@ -32,6 +34,14 @@ export const Blogs = () => {
                     content={blog.content}
                     publishedDate={"2nd Feb 2024"}
                 />)}
+            </div>
+            <div className="col-span-3">
+    <div>
+        <RightCategoryCard />
+    </div>
+    <div>
+        <RightNewsLetter/>
+    </div>
             </div>
         </div>
     </div>

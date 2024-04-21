@@ -27,6 +27,7 @@ userRouter.post('/signup', async (c) => {
       }
       const user = await prisma.user.create({
         data: {
+          name: body.name,
           email: body.email,
           password: body.password,
         }
@@ -36,7 +37,7 @@ userRouter.post('/signup', async (c) => {
       return c.json({ jwt: token })
     } catch(e) {
       c.status(500);
-      return c.json({ error: "An error hi occurred during signup." })
+      return c.json({ error: "An error occurred during signup." })
     }
   })
   
