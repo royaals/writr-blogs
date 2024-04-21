@@ -32,11 +32,11 @@ export const Blogs = () => {
                     authorName={blog.author.name || "Anonymous"}
                     title={blog.title}
                     content={blog.content}
-                    publishedDate={"2nd Feb 2024"}
+                    publishedAt={blog.publishedAt}
                 />)}
             </div>
-            <div className="col-span-3">
-    <div>
+            <div className="col-span-3 hidden lg:block">
+               <div>
         <RightCategoryCard />
     </div>
     <div>

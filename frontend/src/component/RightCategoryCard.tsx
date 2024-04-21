@@ -62,8 +62,9 @@ function BrushIcon(props) {
     )
   }
   
-  
+
   function CpuIcon(props) {
+   
     return (
       <svg
         {...props}

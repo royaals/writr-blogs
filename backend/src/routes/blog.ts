@@ -33,32 +33,31 @@ export const blogRouter = new Hono<{
   
    
   })
-blogRouter.post('/', async(c) => {
-    const body=await c.req.json();
+  blogRouter.post('/', async(c) => {
+    const body = await c.req.json();
     const prisma = new PrismaClient({
         datasourceUrl: c.env.DATABASE_URL,
-      }).$extends(withAccelerate())
-      const validated = blogInput.safeParse(body);
-      if (!validated.success) {
+    }).$extends(withAccelerate())
+    const validated = blogInput.safeParse(body);
+    if (!validated.success) {
         c.status(411);
-        return c.json({ message: "invalid input"
-
-        });
-      }
-     const userId=c.get("userId");
-      const blog=await prisma.post.create({
+        return c.json({ message: "invalid input" });
+    }
+    const userId = c.get("userId");
+    const blog = await prisma.post.create({
         data: {
             title: body.title,
             content: body.content,
             authorId: userId,
-            published: true
-           }
-          
-      })
+            published: true,
+            publishedAt: new Date() 
+        }
+    })
     return c.json({
         id: blog.id
     })
-  })
+})
+
   
   blogRouter.put('/', async(c) => {
     const body=await c.req.json();
@@ -80,6 +79,7 @@ blogRouter.post('/', async(c) => {
             title: body.title,
             content: body.content,
             
+            
            }
           
       })
@@ -99,6 +99,7 @@ blogRouter.post('/', async(c) => {
               content: true,
               title: true,
               id: true,
+              publishedAt: true,
               author: {
                   select: {
                       name: true
@@ -133,6 +134,7 @@ try{
           id: true,
           title: true,
           content: true,
+          publishedAt: true,
           author: {
               select: {
                   name: true
@@ -151,3 +153,23 @@ catch(e){
      
   })
  
+
+  blogRouter.delete('/:id', async(c) => {
+    const id = c.req.param("id");
+    const prisma = new PrismaClient({
+        datasourceUrl: c.env.DATABASE_URL,
+    }).$extends(withAccelerate())
+    try {
+        const blog = await prisma.post.delete({
+            where: {
+                id: id
+            }
+        })
+        return c.json({
+            message: "Blog post deleted successfully"
+        })
+    } catch(e) {
+        c.status(411);
+        return c.json({error: "Error while deleting the blog post"})
+    }
+})

@@ -3,6 +3,12 @@ import { Appbar } from "./AppBar"
 import { Avatar } from "./BlogCard"
 
 export const FullBlog = ({ blog }: {blog: Blog}) => {
+    function formattedDate(time: string) {
+        let date = new Date(time);
+        let options = { year: 'numeric', month: 'short', day: 'numeric' };
+        return date.toLocaleDateString('en-US', options);
+      }
+      
     return <div>
         <Appbar />
         <div className="flex justify-center">
@@ -12,7 +18,7 @@ export const FullBlog = ({ blog }: {blog: Blog}) => {
                         {blog.title}
                     </div>
                     <div className="text-slate-500 pt-2">
-                        Post on 2nd December 2023
+                        Post on {formattedDate(blog.publishedAt)} {/* Use the formatted date here */}
                     </div>
                     <div className="pt-4">
                         {blog.content}

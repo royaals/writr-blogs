@@ -6,7 +6,8 @@ import { BACKEND_URL } from "../config";
 export interface Blog {
     "content": string;
     "title": string;
-    "id": number
+    "id": number,
+    "publishedAt": string;
     "author": {
         "name": string
     }
@@ -55,3 +56,26 @@ export const useBlogs = () => {
         blogs
     }
 }
+
+
+export const useUser = () => {
+ 
+    const [user, setUser] = useState(null);
+  
+    useEffect(() => {
+        axios.get(`${BACKEND_URL}/api/v1/user/username`, {
+          headers: {
+            Authorization: localStorage.getItem("token")
+          }
+        })
+        .then(response => {
+          setUser(response.data);
+        })
+      }, [])
+  
+    return {
+   
+      user
+    }
+  }
+  

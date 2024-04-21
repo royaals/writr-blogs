@@ -3,7 +3,7 @@ interface BlogCardProps {
     authorName: string;
     title: string;
     content: string;
-    publishedDate: string;
+    publishedAt: string;
     id: number;
 }
 
@@ -12,8 +12,13 @@ export const BlogCard = ({
     authorName,
     title,
     content,
-    publishedDate
+    publishedAt
 }: BlogCardProps) => {
+    function formattedDate(time: string) {
+        const date = new Date(time);
+        const options = { year: 'numeric', month: 'short', day: 'numeric' };
+        return date.toLocaleDateString('en-US', options);
+      }
     return <Link to={`/blog/${id}`}>
         <div className="p-4 border-b border-slate-200 pb-4 w-screen max-w-screen-md cursor-pointer">
             <div className="flex">
@@ -23,15 +28,16 @@ export const BlogCard = ({
                     <Circle />
                 </div>
                 <div className="pl-2 font-thin text-slate-500 text-sm flex justify-center flex-col">
-                    {publishedDate}
+                {formattedDate(publishedAt)}
                 </div>
             </div>
             <div className="text-xl font-semibold pt-2">
                 {title}
             </div>
             <div className="text-md font-thin max-w-xl">
-                {content.slice(0, 300) + "..."}
-            </div>
+    {content.length <= 250 ? content : content.slice(0, 250) + "..."}
+</div>
+
             <div className="text-slate-500 text-sm font-thin pt-4">
                 {`${Math.ceil(content.length / 100)} min read`}
             </div>

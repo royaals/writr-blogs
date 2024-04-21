@@ -16,12 +16,12 @@ model User {
   password String
   posts    Post[]
 }
-
 model Post {
-  id        String   @id @default(uuid())
-  title     String
-  content   String
-  published Boolean  @default(false)
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  String
+  id          String   @id @default(uuid())
+  title       String
+  content     String
+  published   Boolean  @default(false)
+  publishedAt DateTime? @default(now())
+  author      User     @relation(fields: [authorId], references: [id])
+  authorId    String
 }
