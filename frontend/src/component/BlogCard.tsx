@@ -17,6 +17,7 @@ export const BlogCard = ({
     function formattedDate(time: string) {
         const date = new Date(time);
         const options = { year: 'numeric', month: 'short', day: 'numeric' };
+          //@ts-ignore
         return date.toLocaleDateString('en-US', options);
       }
       return (

@@ -22,6 +22,7 @@ const RightCategoryCard = () => {
   </div>
   )
 }
+//@ts-ignore
 function BrushIcon(props) {
     return (
       <svg
@@ -41,7 +42,7 @@ function BrushIcon(props) {
       </svg>
     )
   }
-  
+  //@ts-ignore
   function CodeIcon(props) {
     return (
       <svg
@@ -62,7 +63,7 @@ function BrushIcon(props) {
     )
   }
   
-
+//@ts-ignore
   function CpuIcon(props) {
    
     return (

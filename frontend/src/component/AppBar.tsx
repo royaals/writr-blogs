@@ -1,12 +1,17 @@
 import { Avatar } from "./BlogCard"
 import { Link } from "react-router-dom"
-import { AvatarImage, AvatarFallback } from "@/components/ui/avatar"
+
 import { HoverCardTrigger, HoverCardContent, HoverCard } from "@/components/ui/hover-card"
 import { Button } from "@/components/ui/button"
-import { useUser } from "@/hooks"
 
+import { useUser } from "@/hooks"
+interface User {
+  name: string;
+  
+}
 export const Appbar = () => {
-    const { user } = useUser();
+
+    const { user } = useUser() as { user: User | null };
     return <div className="border-b flex justify-between px-10 py-4">
                 <Link to={'/blogs'} className="flex items-center gap-2">
           <FeatherIcon className="h-6 w-6 text-gray-600 dark:text-gray-400" />
@@ -21,9 +26,11 @@ export const Appbar = () => {
             </Link>
             <div className="relative">
             <HoverCard>
+        
               <HoverCardTrigger asChild>
+              
                 <div className="flex items-center gap-2 rounded-full bg-gray-100 px-3 py-2 text-sm font-medium  dark:bg-gray-800 dark:hover:bg-gray-700">
-                
+          
                 <Avatar size={"big"} name={user ? user.name : 'Default'} />
 
 
@@ -36,12 +43,13 @@ export const Appbar = () => {
                 
                 <div className="space-y-2 p-4">
                   <div className="flex items-center gap-3">
-                    
+                
                   <Avatar size={"big"} name={user ? user.name : 'Default'} />
 
               
-                    
+             
                     <div>
+                   
                       <h4 className="text-sm font-semibold">{user ? user.name : 'Default'}</h4>
                       <p className="text-xs text-gray-500 dark:text-gray-400">@{user ? user.name : 'Default'}</p>
                     </div>
@@ -61,7 +69,7 @@ export const Appbar = () => {
         </div>
     </div>
 }
-
+//@ts-ignore
 function FeatherIcon(props) {
   return (
     <svg
