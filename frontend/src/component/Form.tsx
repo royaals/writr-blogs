@@ -3,7 +3,7 @@ import { Link,useNavigate } from "react-router-dom"
 import { ChangeEvent, useState } from "react"
 import { FaEye as Eye, FaEyeSlash as EyeSlash } from 'react-icons/fa';
 import axios from "axios";
-import { BACKEND_URL } from "@/config"
+const BACKEND_URL = import.meta.env.VITE_REACT_APP_BACKEND_URL;
 
 
 const Form = ({type}: {type: "signup" | "signin"}) => {
