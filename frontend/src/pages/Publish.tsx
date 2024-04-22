@@ -1,12 +1,13 @@
 import { Appbar } from "../component/AppBar";
 import axios from "axios";
-import { BACKEND_URL } from "../config";
+
 import { useNavigate } from "react-router-dom";
 import { ChangeEvent, useState } from "react";
 
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
+import { BACKEND_URL } from "@/config"
 export const Publish = () => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
