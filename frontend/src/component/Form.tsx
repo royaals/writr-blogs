@@ -4,6 +4,8 @@ import { ChangeEvent, useState } from "react"
 import { FaEye as Eye, FaEyeSlash as EyeSlash } from 'react-icons/fa';
 import axios from "axios";
 import { BACKEND_URL } from "../config"
+
+
 const Form = ({type}: {type: "signup" | "signin"}) => {
   const navigate=useNavigate();
     const [postInputs,setPostInputs]=useState<SignupInput>({
@@ -11,7 +13,7 @@ const Form = ({type}: {type: "signup" | "signin"}) => {
         password: "",
         name: ""
     })
-
+   
     async function sendRequest() {
       try {
           const response = await axios.post(`${BACKEND_URL}/api/v1/user/${type === "signup" ? "signup" : "signin"}`, postInputs);
@@ -22,12 +24,13 @@ const Form = ({type}: {type: "signup" | "signin"}) => {
           navigate("/blogs");
       } catch(e) {
           console.error('Error:', e);  
-          alert("Error while signing up")
+         alert("Error occured, please try again.")  
       }
   }
     
   return (
-    <div className=" bg-card text-card-foreground shadow-sm" data-v0-t="card">
+   
+    <div className=" bg-card text-card-foreground shadow-sm w-full max-w-md" data-v0-t="card">
     <div className="flex flex-col p-6 space-y-2">
      {type=== "signup"? <h3 className="whitespace-nowrap font-bold text-3xl">Sign Up</h3> : <h3 className="whitespace-nowrap font-bold text-3xl">Sign in</h3>}
     {type==="signup"? <p className="text-2xl text-slate-500 text-muted-foreground">Get started with an account on Writr.</p>: <p className="text-2xl text-slate-500 text-muted-foreground">Welcome back!</p>}
@@ -59,34 +62,6 @@ const Form = ({type}: {type: "signup" | "signin"}) => {
       >{type==="signup" ? "Get started" : "Sign in"}
        
       </button>
-    </div>
-    <div className="flex justify-center">
-      
-      <div >or</div>
-    
-     
-     </div>
-
-    <div className="flex items-center p-6">
-    {type==="signup" ?   <button className="inline-flex items-center justify-center whitespace-nowrap mr-3 text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full">
-      Sign up with Google
-    </button> 
-    :<button className="inline-flex items-center justify-center whitespace-nowrap mr-3 text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full">
-      Sign in with Google
-    </button>}
-    {type==="signup" ?   <button className="inline-flex items-center justify-center whitespace-nowrap mr-3 text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full">
-      Sign up with Facebook
-    </button> 
-    :<button className="inline-flex items-center justify-center whitespace-nowrap mr-3 text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full">
-      Sign in with Facebook
-    </button>}
-    {type==="signup" ?   <button className="inline-flex items-center justify-center whitespace-nowrap mr-3 text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full">
-      Sign up with GitHub
-    </button> 
-    :<button className="inline-flex items-center justify-center whitespace-nowrap mr-3 text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full">
-      Sign in with GitHub
-    </button>}
-    
     </div>
     
     <div className="mt-4 mb-4 text-center text-sm">

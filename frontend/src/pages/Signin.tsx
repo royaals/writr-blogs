@@ -1,6 +1,6 @@
 
 import Form from "../component/Form";
-import {Quote} from "../component/Quote" 
+import { Quote2 } from "@/component/Quote2";
 const Signin = () => {
   return (
     <div>
@@ -9,7 +9,7 @@ const Signin = () => {
         <Form type="signin"/>
         </div>
         <div className="hiddden lg:block">
-        <Quote/>
+        <Quote2/>
         </div>
        
       </div>

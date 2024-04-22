@@ -5,6 +5,7 @@ import  {Blog}  from './pages/Blog'
 import Landingpage from './pages/Landingpage'
 import {Publish} from "./pages/Publish"
 import {Blogs} from './pages/Blogs'
+import { Toaster } from '../src/components/ui/toaster'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/publish" element={<Publish />} />
         </Routes>
       </BrowserRouter>
+      <Toaster />
     </>
   )
 }

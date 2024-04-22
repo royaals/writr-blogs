@@ -4,8 +4,8 @@ import { Avatar } from "./BlogCard"
 
 export const FullBlog = ({ blog }: {blog: Blog}) => {
     function formattedDate(time: string) {
-        let date = new Date(time);
-        let options = { year: 'numeric', month: 'short', day: 'numeric' };
+        const date = new Date(time);
+        const options = { year: 'numeric', month: 'short', day: 'numeric' };
         return date.toLocaleDateString('en-US', options);
       }
       
