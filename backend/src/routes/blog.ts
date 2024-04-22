@@ -28,6 +28,7 @@ export const blogRouter = new Hono<{
     }
     catch(e){
         c.status(403);
+        
         return c.json({message: "You are not logged in"});
     }
   
