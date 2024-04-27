@@ -31,7 +31,7 @@ This is a user-friendly blog posting application that simplifies content creatio
 
     - `DATABASE_URL`: This should be your PostgreSQL database URL. For example, if you're using Docker, it would look something like this: `postgresql://postgres:mysecretpassword@localhost:5432/postgres`. If you're using a PostgreSQL provider like Neon.tech, Supabase, Aiven, etc., use the URL they provide.
 
-5. Edit `wrangler.toml` with the correct Prisma Accelerate connection pool URL.
+5. Edit `wrangler.toml` with the correct Prisma Accelerate connection pool URL and jwt-secret.
 
 6. Run Prisma migrations. This command will apply the database schema changes:
     ```bash
