@@ -2,7 +2,7 @@
 
 # Writr-Blog Application
 
-This is a user-friendly blog posting application that simplifies content creation and publishing. The application has secure user authentication, an intuitive interface, and a responsive layout. It is built using Hono, Cloudflare, React.js, TypeScript, Tailwind CSS, and Vite.
+This is a user-friendly blog posting application that simplifies content creation and publishing. The application has secure user authentication, an intuitive interface, and a responsive layout. It is built using Hono, Cloudflare Workers, PostgreSQL, Prisma ORM,React.js, TypeScript, Tailwind CSS, .
 
 ## Features
 - User Authentication
