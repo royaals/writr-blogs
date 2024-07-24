@@ -21,7 +21,7 @@ export const Appbar = () => {
             <Link to={`/publish`}>
                 <div className="flex items-center"> 
                 <FeatherIcon className="h-6 w-6 text-gray-600 dark:text-gray-400" />
-                    <button type="button" className="text-slate-500 bg-white-700 mr-2 focus:outline-none   font-medium rounded-full text-sm px-5 py-2.5 text-center">Write</button>
+                    <button type="button" className="text-slate-500 bg-white-700 mr-2 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center">Write</button>
                 </div> 
             </Link>
             <div className="relative">
